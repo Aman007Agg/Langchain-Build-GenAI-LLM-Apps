@@ -1,11 +1,13 @@
 import os
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 import streamlit as st
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser,JsonOutputParser
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-llm=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# llm=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+llm = ChatOllama(model="llama3.2")
 title_prompt = PromptTemplate(
     input_variables=["topic"],
     template="""You are an experienced speech writer.
