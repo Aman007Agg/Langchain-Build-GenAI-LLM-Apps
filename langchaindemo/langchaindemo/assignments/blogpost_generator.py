@@ -1,12 +1,16 @@
 import streamlit as st
-from langchain_openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
+# from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
+from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import os
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+from openai import models
 
-llm = ChatOpenAI(model="gpt-4", api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# llm = ChatOpenAI(model="gpt-4", api_key=OPENAI_API_KEY)
+llm = ChatOllama(model="llama3.2")
 
 outline_prompt = PromptTemplate(
     input_variables=["topic"],
