@@ -1,8 +1,12 @@
 import os
-from langchain_openai import OpenAIEmbeddings
+# from langchain_openai import OpenAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+# from langchaindemo.langchaindemo.rag.historyaware_rag_demo import embeddings
+
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+embeddings = OllamaEmbeddings(model="llama3.2")
 
 response = embeddings.embed_documents(
     [
