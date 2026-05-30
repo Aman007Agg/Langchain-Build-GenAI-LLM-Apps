@@ -1,12 +1,14 @@
 import os
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 import streamlit as st
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_community.chat_models import ChatOllama
+# from langchain_community.chat_models import ChatOllama
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-llm1=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# llm1=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+llm1 = ChatOllama(model="llama3.2")
 llm2=ChatOllama(model="mistral")
 title_prompt = PromptTemplate(
     input_variables=["topic"],
