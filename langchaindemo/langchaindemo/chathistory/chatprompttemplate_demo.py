@@ -1,10 +1,13 @@
 import os
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 import streamlit as st
 from langchain_core.prompts import ChatPromptTemplate
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-llm=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# llm=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+llm = ChatOllama(model="llama3.2")
+
 prompt_template = ChatPromptTemplate.from_messages(
 [
     ("system","You are a Agile Coach.Answer any questions "
