@@ -1,11 +1,15 @@
 import os
-from langchain_openai import OpenAIEmbeddings
+
+from langchain_community.llms.ollama import Ollama
+# from langchain_openai import OpenAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-llm=OpenAIEmbeddings(api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# llm=OpenAIEmbeddings(api_key=OPENAI_API_KEY)
+llm = OllamaEmbeddings(model="llama3.2")
 
 document = TextLoader("job_listings.txt").load()
 text_splitter= RecursiveCharacterTextSplitter(chunk_size=200,
