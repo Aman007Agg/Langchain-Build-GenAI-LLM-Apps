@@ -1,11 +1,13 @@
 import os
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.chat_message_histories.in_memory import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-llm = ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# llm = ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+llm = ChatOllama(model="llama3.2")
 prompt_template = ChatPromptTemplate.from_messages(
 [
     ("system", "You are a Agile Coach.Answer any questions "
