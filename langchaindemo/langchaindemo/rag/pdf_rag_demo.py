@@ -1,5 +1,6 @@
 import os
-from langchain_openai import OpenAIEmbeddings,ChatOpenAI
+# from langchain_openai import OpenAIEmbeddings,ChatOpenAI
+from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
@@ -8,9 +9,12 @@ from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-embeddings=OpenAIEmbeddings(api_key=OPENAI_API_KEY)
-llm=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# embeddings=OpenAIEmbeddings(api_key=OPENAI_API_KEY)
+# llm=ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+
+embeddings = OllamaEmbeddings(model="llama3.2")
+llm = ChatOllama(model="llama3.2")
 
 document = PyPDFLoader("academic_research_data.pdf").load()
 text_splitter= RecursiveCharacterTextSplitter(chunk_size=1000,
